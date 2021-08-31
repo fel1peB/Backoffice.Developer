@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Backoffice.Developer.Application\Backoffice.Developer.Application.csproj" />
+    <ProjectReference Include="..\Backoffice.Developer.Domain\Backoffice.Developer.Domain.csproj" />
+    <ProjectReference Include="..\Backoffice.Developer.Infra.Data\Backoffice.Developer.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

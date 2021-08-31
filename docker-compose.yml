@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  backoffice.developer.api:
+    image: ${DOCKER_REGISTRY-}backofficedeveloperapi
+    build:
+      context: .
+      dockerfile: Backoffice.Developer.Api/Dockerfile
+    networks:
+      - backoffice
+  mongodb:
+    image: mongo
+    container_name: backofficeDeveloper
+    hostname: backofficeDeveloper
+    restart: always
+    networks:
+      - backoffice
+    cap_add:
+      - ALL
+    ports:
+      - "9505:27017"
+    volumes:
+      - "backofficeDeveloper:/data/db"
+    healthcheck: # Verifying that the Mongo service was started in the container
+      test: CMD echo 'db.stats().ok' | mongo localhost:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
+
+networks: 
+    backoffice:
+      driver: bridge
+volumes:
+  backofficeDeveloper: 

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Backoffice.Developer.Domain\Backoffice.Developer.Domain.csproj" />
+    <ProjectReference Include="..\Backoffice.Developer.Infra.Data\Backoffice.Developer.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
