@@ -1,5 +1,6 @@
 ﻿using Backoffice.Developer.Application.Interface;
-using Backoffice.Developer.Application.Repository;
+using Backoffice.Developer.Application.Maps;
+using Backoffice.Developer.Application.Models;
 using Backoffice.Developer.Application.Service;
 using Backoffice.Developer.Infra.Data;
 using Microsoft.Extensions.Configuration;
@@ -20,11 +21,12 @@ namespace Backoffice.Developer.Infra.IOC
             services.AddTransient(services => mongodbSettings);
             services.AddTransient(typeof(Repository<>));
 
-            services.AddScoped<IDeveloperService, DeveloperService>();
+            services.AddScoped<IService<EmployeeModel>, EmployeeService>();
+            services.AddScoped<IService<SkillModel>, SkillService>();
 
+            new EmployeeMap().Configure();
+            new SkillMap().Configure();
 
-            var developerMap = new DeveloperMap();
-            developerMap.Configure();
             return services;
         }
     }

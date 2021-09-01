@@ -3,23 +3,23 @@ using Backoffice.Developer.Application.Service;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using DeveloperModel = Backoffice.Developer.Application.Models.Developer;
+using Backoffice.Developer.Application.Models;
 
 namespace Backoffice.Developer.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DeveloperController : ControllerBase
+    public class EmployeeController : ControllerBase
     {
-        protected readonly IDeveloperService _service;
+        protected readonly IService<EmployeeModel> _service;
 
-        public DeveloperController(IDeveloperService Service)
+        public EmployeeController(IService<EmployeeModel> Service)
         {
             _service = Service;
         }
 
         [HttpPost]
-        public async Task<ActionResult> InsertAsync([FromBody] DeveloperModel model)
+        public async Task<ActionResult> InsertAsync([FromBody] EmployeeModel model)
         {
             await _service.AddAsync(model);
             return Ok();

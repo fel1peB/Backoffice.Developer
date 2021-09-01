@@ -8,13 +8,10 @@ using Backoffice.Developer.Domain.Validator;
 
 namespace Backoffice.Developer.Domain.Entities
 {
-    public class Developer : IEntity
+    public class Employee : IEntity
     {
-        private readonly DeveloperValidator _validations;
-        public Developer()
-        {
-            _validations = new DeveloperValidator();
-        }
+        private readonly EmployeeValidator _validations = new();
+
         public ObjectId Id { get; set; }
         public DateTime LastUpdate { get; set; }
         public string Name { get; set; }

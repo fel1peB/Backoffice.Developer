@@ -1,55 +1,58 @@
 ﻿using Mapster;
 using System.Threading.Tasks;
-using Backoffice.Developer.Application.Repository;
-using DeveloperDomain = Backoffice.Developer.Domain.Entities.Developer;
-using DeveloperModel = Backoffice.Developer.Application.Models.Developer;
+using Backoffice.Developer.Application.Maps;
+
 using Backoffice.Developer.Application.Interface;
 using MongoDB.Bson;
 using System.Collections.Generic;
 using MongoDB.Driver;
 using System.Linq;
 using Backoffice.Developer.Infra.Data;
+using Backoffice.Developer.Application.Models;
+using Backoffice.Developer.Domain.Entities;
 
 namespace Backoffice.Developer.Application.Service
 {
-    public class DeveloperService : IDeveloperService
+    public class EmployeeService : IService<EmployeeModel>
     {
-        private readonly Repository<DeveloperDomain> _repo;
-        public DeveloperService(Repository<DeveloperDomain> repo) 
+        private readonly Repository<Employee> _repo;
+        public EmployeeService(Repository<Employee> repo) 
         {
             _repo = repo;
         }
 
-        public async Task AddAsync(DeveloperModel entity)
+        public async Task AddAsync(EmployeeModel entity)
         {
-            var domainEntity = entity.Adapt<DeveloperDomain>();
+            var domainEntity = entity.Adapt<Employee>();
+
             var validationResult = domainEntity.Validate();
-            if (validationResult.Count() > 0)
+            if (validationResult.Any())
                 throw new System.Exception(validationResult.ToJson());
+
             await _repo.CreateAsync(domainEntity);
         }
 
-        public Task DeleteAsync(DeveloperModel entity)
+        public Task DeleteAsync(EmployeeModel entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<DeveloperModel> FindAsync(ObjectId id)
+        public Task<EmployeeModel> FindAsync(ObjectId id)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<List<DeveloperModel>> FindAsync(FilterDefinition<DeveloperModel> build)
+        public Task<List<EmployeeModel>> FindAsync(FilterDefinition<EmployeeModel> build)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<DeveloperModel>> GetAllAsync()
+        public Task<IEnumerable<EmployeeModel>> GetAllAsync()
         {
             throw new System.NotImplementedException();
         }
 
-        public Task UpdateAsync(DeveloperModel entity)
+        public Task UpdateAsync(EmployeeModel entity)
         {
             throw new System.NotImplementedException();
         }
