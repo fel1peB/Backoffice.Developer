@@ -1,8 +1,9 @@
-﻿using FluentValidation;
+﻿using Backoffice.Developer.Domain.Entities;
+using FluentValidation;
 
 namespace Backoffice.Developer.Domain.Validator
 {
-    public class SkillValidator : AbstractValidator<Entities.Skill>
+    public class SkillValidator : AbstractValidator<Skill>
     {
         public SkillValidator()
         {
