@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Backoffice.Developer.Infra.Data
 {
-    public abstract class Repository<T> : IRepository<T> where T : IEntity
+    public class Repository<T> : IRepository<T> where T : IEntity
     {
         private readonly IMongoCollection<T> _collection;
         public Repository(Settings settings)

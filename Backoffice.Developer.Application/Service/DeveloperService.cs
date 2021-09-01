@@ -8,13 +8,14 @@ using MongoDB.Bson;
 using System.Collections.Generic;
 using MongoDB.Driver;
 using System.Linq;
+using Backoffice.Developer.Infra.Data;
 
 namespace Backoffice.Developer.Application.Service
 {
     public class DeveloperService : IDeveloperService
     {
-        private readonly DeveloperRepository _repo;
-        public DeveloperService(DeveloperRepository repo) 
+        private readonly Repository<DeveloperDomain> _repo;
+        public DeveloperService(Repository<DeveloperDomain> repo) 
         {
             _repo = repo;
         }
