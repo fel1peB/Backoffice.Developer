@@ -8,15 +8,15 @@ using System.Collections.Generic;
 
 namespace Backoffice.Developer.Domain.Entities
 {
-    public class Employee : IEntity
+    public class Technology : IEntity
     {
-        private readonly EmployeeValidator _validations = new();
+        private readonly TechnologyValidator _validations = new();
 
         public ObjectId Id { get; set; }
         public DateTime LastUpdate { get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
-        public List<Technology> Technologies { get; set; }
+        public int TimeWorked { get; set; }
+        public List<Skill> Skills { get; set; }
 
         public IEnumerable<ValidationResult> Validate()
         {

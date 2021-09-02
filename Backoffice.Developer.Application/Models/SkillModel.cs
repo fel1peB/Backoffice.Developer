@@ -1,5 +1,6 @@
 ﻿using Backoffice.Developer.Application.Interface;
 using System;
+using System.Collections.Generic;
 
 namespace Backoffice.Developer.Application.Models
 {
@@ -8,5 +9,6 @@ namespace Backoffice.Developer.Application.Models
         public string Id { get; set; }
         public DateTime LastUpdate { get; set; }
         public string Description { get; set; }
+
     }
 }

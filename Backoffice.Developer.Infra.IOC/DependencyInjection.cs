@@ -26,6 +26,7 @@ namespace Backoffice.Developer.Infra.IOC
 
             new EmployeeMap().Configure();
             new SkillMap().Configure();
+            new TechnologyMap().Configure();
 
             return services;
         }
