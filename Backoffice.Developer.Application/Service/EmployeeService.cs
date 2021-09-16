@@ -47,9 +47,10 @@ namespace Backoffice.Developer.Application.Service
             throw new System.NotImplementedException();
         }
 
-        public Task<IEnumerable<EmployeeModel>> GetAllAsync()
+        public async Task<IEnumerable<EmployeeModel>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            var list = await _repo.GetAll();
+            return list.Adapt<IEnumerable<EmployeeModel>>();
         }
 
         public Task UpdateAsync(EmployeeModel entity)

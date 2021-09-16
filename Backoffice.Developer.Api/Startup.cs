@@ -26,7 +26,7 @@ namespace Backoffice.Developer.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors();
             services.AddInfrastructure(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -39,9 +39,13 @@ namespace Backoffice.Developer.Api
         {
             if (env.IsDevelopment())
             {
+                app.UseCors(
+                   options => options.WithOrigins("http://localhost:4200").AllowAnyMethod()
+               );
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Backoffice.Developer.Api v1"));
+
             }
 
             app.UseHttpsRedirection();

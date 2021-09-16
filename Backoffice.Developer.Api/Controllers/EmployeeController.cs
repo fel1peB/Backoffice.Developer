@@ -4,6 +4,7 @@ using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Backoffice.Developer.Application.Models;
+using System.Collections.Generic;
 
 namespace Backoffice.Developer.Api.Controllers
 {
@@ -23,6 +24,14 @@ namespace Backoffice.Developer.Api.Controllers
         {
             await _service.AddAsync(model);
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<EmployeeModel>> GetAsync()
+        {
+            var allRecords = await _service.GetAllAsync();
+
+            return allRecords.Adapt<List<EmployeeModel>>();
         }
     }
 }
